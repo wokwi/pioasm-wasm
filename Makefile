@@ -6,7 +6,7 @@
 # 2. Install the pi-pico-sdk, and set PICO_SDK_PATH to point at it, e.g.
 #    export PICO_SDK_PATH=~/pico/pico-sdk
 
-EMCC_FLAGS = -s WASM=1 -s MODULARIZE=1 -s EXPORTED_RUNTIME_METHODS=callMain,FS_writeFile -O3
+EMCC_FLAGS = -s WASM=1 -s MODULARIZE=1 -s EXPORTED_RUNTIME_METHODS=['callMain','FS_writeFile'] -O3
 OBJ_FILES = CMakeFiles/pioasm.dir/main.cpp.o
 
 all: build/pioasm.js build/pioasm-browser.js
