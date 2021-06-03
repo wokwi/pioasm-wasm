@@ -2,6 +2,26 @@
 
 Raspberry Pi Pico pioasm tool compiled to Web Assembly.
 
+## Online pioasm
+
+The online version of pioasm allows you to compile PIO assembly code to C/Python/Ada right in your browser:
+
+https://wokwi.com/tools/pioasm
+
+## Library usage example
+
+You can install the library from npm:
+
+```
+npm install --save pioasm
+```
+
+or yarn:
+
+```
+yarn add pioasm
+```
+
 Usage example:
 
 ```javascript
