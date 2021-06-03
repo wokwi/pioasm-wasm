@@ -1,0 +1,45 @@
+{
+  "name": "pioasm",
+  "version": "1.0.0",
+  "description": "Raspberry Pi Pico pioasm compiled to Web Assembly",
+  "main": "pioasm.js",
+  "type": "module",
+  "files": [
+    "pioasm.js",
+    "pioasm.d.ts",
+    "build/pioasm.js",
+    "build/pioasm-browser.js",
+    "build/pioasm.wasm",
+    "LICENSE"
+  ],
+  "browser": {
+    "#pioasm-emcc": "./build/pioasm-browser.js"
+  },
+  "imports": {
+    "#pioasm-emcc": {
+      "browser": "./build/pioasm-browser.js",
+      "default": "./build/pioasm.js"
+    }
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc --declaration --emitDeclarationOnly --allowJS pioasm.js",
+    "test": "node test"
+  },
+  "keywords": [
+    "Raspberry Pi Pico",
+    "PIO",
+    "Programmable IO",
+    "Web Assembly",
+    "WASM",
+    "Emscripten"
+  ],
+  "author": "Uri Shaked",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "@types/emscripten": "^1.39.4"
+  }
+}
