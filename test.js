@@ -24,7 +24,7 @@ from machine import Pin
 @rp2.asm_pio()
 def blink():
     wrap_target()
-    pull(, block)                         # 0
+    pull(block)                           # 0
     out(y, 32)                            # 1
     wrap()
 
