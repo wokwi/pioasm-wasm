@@ -25,7 +25,7 @@ yarn add pioasm
 Usage example:
 
 ```javascript
-import { pioasm } from 'pioasm';
+import { PIOAssembler } from 'pioasm';
 
 const source = `
   .program blink
@@ -33,8 +33,9 @@ const source = `
   out y, 32
 `;
 
-pioasm(source).then(result => {
-  console.log(result);
+const pioasm = new PIOAssembler();
+pioasm.assemble(source).then(result => {
+  console.log(result.output);
 })
 ```
 

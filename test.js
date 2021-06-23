@@ -3,7 +3,7 @@
  */
 
 import assert from 'assert';
-import { pioasm } from './pioasm.js';
+import { PIOAssembler } from './pioasm.js';
 
 const testInput = `
   .program blink
@@ -30,9 +30,31 @@ def blink():
 
 `;
 
+const badProgram = `
+.program bad
+  jmp unknown
+`;
+
 async function main() {
-  assert.strictEqual(await pioasm(testInput, 'python'), expectedOutput);
-  assert.strictEqual(await pioasm(testInput, 'hex'), '80a0\n6040');
+  const pioasm = new PIOAssembler();
+
+  assert.deepStrictEqual(await pioasm.assemble(testInput, 'python'), {
+    output: expectedOutput,
+    exitCode: 0,
+  });
+
+  assert.deepStrictEqual(await pioasm.assemble(testInput, 'hex'), {
+    output: '80a0\n6040',
+    exitCode: 0,
+  });
+
+  assert.deepStrictEqual(await pioasm.assemble(badProgram, 'c-sdk'), {
+    output: `input.pio:3.7-13: undefined symbol 'unknown'
+    3 |   jmp unknown
+      |       ^~~~~~~`,
+    exitCode: 1,
+  });
+
   console.log('Test passed successfully!');
 }
 
