@@ -25,7 +25,7 @@ CMakeFiles/pioasm.dir/main.cpp.o: build/Makefile
 	cd build && emmake make
 
 build/Makefile: build
-	cd build && emcmake cmake ${PICO_SDK_PATH}/tools/pioasm
+	cd build && emcmake cmake -D CMAKE_CXX_FLAGS="-fexceptions" ${PICO_SDK_PATH}/tools/pioasm
 
 build:
 	mkdir build
